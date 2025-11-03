@@ -320,14 +320,23 @@ const App: React.FC = () => {
     if (audioRef.current) {
       if (isPlaying) {
         audioRef.current.pause();
+        setIsPlaying(false);
       } else {
         if (stopTimeoutRef.current) {
           clearTimeout(stopTimeoutRef.current);
           stopTimeoutRef.current = null;
         }
-        audioRef.current.play();
+        const playPromise = audioRef.current.play();
+        setIsPlaying(true); // Optimistic update
+        if (playPromise !== undefined) {
+          playPromise.catch(error => {
+            if (error.name !== 'AbortError') {
+              console.error("Error playing audio:", error);
+              setIsPlaying(false); // Revert on actual error
+            }
+          });
+        }
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -345,17 +354,28 @@ const App: React.FC = () => {
         clearTimeout(stopTimeoutRef.current);
       }
       audioRef.current.currentTime = phrase.video_timestamp;
-      audioRef.current.play();
+      
+      const playPromise = audioRef.current.play();
       setIsPlaying(true);
       setActivePhraseId(phrase.id);
 
-      stopTimeoutRef.current = window.setTimeout(() => {
-        if (audioRef.current) {
-          audioRef.current.pause();
-          setIsPlaying(false);
-          setActivePhraseId(null);
-        }
-      }, phrase.duration * 1000);
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          stopTimeoutRef.current = window.setTimeout(() => {
+            if (audioRef.current) {
+              audioRef.current.pause();
+              setIsPlaying(false);
+              setActivePhraseId(null);
+            }
+          }, phrase.duration * 1000);
+        }).catch(error => {
+          if (error.name !== 'AbortError') {
+            console.error("Error playing phrase:", error);
+            setIsPlaying(false);
+            setActivePhraseId(null);
+          }
+        });
+      }
     }
   };
 

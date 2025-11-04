@@ -24,8 +24,8 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "phonetics_spanish": "Al-lá-hu Ák-bar",
     "translation_spanish": "Dios es el más grande",
     "translation_per_segment": "Dios es el más grande",
-    "video_timestamp": 4.5,
-    "duration": 2.5,
+    "video_timestamp": 5,
+    "duration": 2,
     "highlight_timing": "0.0-2.5",
     "position_image_names": ["parado_mano_oreja.png"]
   },
@@ -39,7 +39,7 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "Glorificado seas, oh Allah, y alabado seas|Bendito es tu nombre|Exaltada es tu majestad|No hay otro dios que Tú|Me refugio en Allah del demonio maldito",
     "video_timestamp": 7,
     "duration": 12,
-    "highlight_timing": "0.0-2.4|2.4-2.5|2.5-2.52|2.52-3.55|3.55-12",
+    "highlight_timing": "0.0-2.4|2.4-4.0|4.0-5.60|5.60-7.35|7.35-11",
     "position_image_names": ["parado_manos_cruzadas.png"]
   },
   {
@@ -52,7 +52,7 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "En el nombre de Dios|El Compasivo|El Misericordioso",
     "video_timestamp": 19,
     "duration": 3.6,
-    "highlight_timing": "0.0-1.2|1.2-2.4|2.4-3.6",
+    "highlight_timing": "0.0-1.2|1.2-2.0|2.0-3.6",
     "position_image_names": ["parado_manos_cruzadas.png"]
   },
   {
@@ -104,7 +104,7 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "El camino de los que has favorecido|no el de los que son motivo de ira|ni el de los extraviados",
     "video_timestamp": 36.95,
     "duration": 11,
-    "highlight_timing": "0.0-3.3|3.3-5.5|6.5-11",
+    "highlight_timing": "0.0-3.5|3.5-5.6|5.6-14",
     "position_image_names": ["parado_manos_cruzadas.png"]
   },
   {
@@ -130,7 +130,7 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "Por la protección|concedida a Quraysh",
     "video_timestamp": 50,
     "duration": 3.21,
-    "highlight_timing": "50-51.5|51.5-53.2",
+    "highlight_timing": "0.0-1.5|1.5-3.2",
     "position_image_names": ["parado_manos_cruzadas.png"]
   },
   {
@@ -143,7 +143,7 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "Su seguridad|durante las caravanas|de invierno|y verano",
     "video_timestamp": 53.2,
     "duration": 4.8,
-    "highlight_timing": "53.2-54.5|54.5-56|56-57.5|57.5-58.2",
+    "highlight_timing": "0.0-1.3|1.3-2.2|2.2-3.5|3.5-5",
     "position_image_names": ["parado_manos_cruzadas.png"]
   },
   {
@@ -156,7 +156,7 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "Que adoren|pues|al Señor|de esta Casa (la Kaaba)",
     "video_timestamp": 58,
     "duration": 3.4,
-    "highlight_timing": "58-58.8|58.8-59.5|59.5-60.3|60.3-61.4",
+    "highlight_timing": "0.0-1.3|1.3-2.2|2.2-2.8|2.8-5.0",
     "position_image_names": ["parado_manos_cruzadas.png"]
   },
   {
@@ -169,17 +169,17 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "Que les dio|de comer|cuando|tenían hambre|y les protegió|min|del temor",
     "video_timestamp": 61.6,
     "duration": 7.7,
-    "highlight_timing": "61.6-62.6|62.6-63.6|63.6-64.3|64.3-65.5|65.5-67|67-67.6|67.6-69.3",
+    "highlight_timing": "0.0-1.3|1.3-2.2|2.2-2.8|2.8-4.0|4.0-5.0|5.0-5.7|5.7-7.0",
     "position_image_names": ["parado_manos_cruzadas.png"]
   },
   {
     "id": 13,
     "name": "Takbir (al pasar a la inclinación)",
-    "arabic": "الله|أكبر",
-    "transliteration": "Allāhu|Akbar",
-    "phonetics_spanish": "Al-lá-hu|Ák-bar",
+    "arabic": "الله أكبر",
+    "transliteration": "Allāhu Akbar",
+    "phonetics_spanish": "Al-lá-hu Ák-bar",
     "translation_spanish": "Dios es el más grande (al pasar de pie a la posición de inclinación)",
-    "translation_per_segment": "Dios es|el más grande (al pasar de pie a la posición de inclinación)",
+    "translation_per_segment": "Dios es el más grande (al pasar de pie a la posición de inclinación)",
     "video_timestamp": 69,
     "duration": 2,
     "highlight_timing": "69-70|70-71",
@@ -195,7 +195,7 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "Glorificado sea|mi Señor|el Grandioso",
     "video_timestamp": 71.5,
     "duration": 6,
-    "highlight_timing": "0-1.5|1.5-3.5|3.5-6",
+    "highlight_timing": "0-1.2|1.2-1.7|1.7-2.8",
     "position_image_names": ["inclinacion_ruku.png"]
   },
   {
@@ -208,20 +208,20 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "Dios escucha|a quien|le alaba.|¡Señor nuestro|a Ti|la alabanza!",
     "video_timestamp": 77.4,
     "duration": 6,
-    "highlight_timing": "0-0.8|0.8-1.5|1.5-2.5|2.5-3.7|3.7-4.7|4.7-5.3|5.3-6",
+    "highlight_timing": "0-0.8|0.8-1.5|1.5-2.5|2.5-3.7|3.7-4.7|4.7-5.0|5.0-6",
     "position_image_names": ["parado_brazos_lados.png"]
   },
   {
     "id": 16,
     "name": "Takbir (al pasar a la postración)",
-    "arabic": "الله|أكبر",
-    "transliteration": "Allāhu|Akbar",
-    "phonetics_spanish": "Al-lá-hu|Ák-bar",
+    "arabic": "الله أكبر",
+    "transliteration": "AllāhuAkbar",
+    "phonetics_spanish": "Al-lá-huÁk-bar",
     "translation_spanish": "Dios es el más grande (al bajar desde de pie a la primera postración)",
-    "translation_per_segment": "Dios es|el más grande (al bajar desde de pie a la primera postración)",
+    "translation_per_segment": "Dios es el más grande (al bajar desde de pie a la primera postración)",
     "video_timestamp": 83.5,
     "duration": 2,
-    "highlight_timing": "0-1|1-2",
+    "highlight_timing": "0-1",
     "position_image_names": ["postracion_sujud.png"]
   },
   {
@@ -234,17 +234,17 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "Glorificado sea|mi Señor|el Altísimo",
     "video_timestamp": 86,
     "duration": 7,
-    "highlight_timing": "0-2|2-4.5|4.5-7",
+    "highlight_timing": "0-1.5|1.5-2.0|2.0-5",
     "position_image_names": ["postracion_sujud.png"]
   },
   {
     "id": 18,
     "name": "Entre postraciones (al incorporarse y volver a postrarse)",
-    "arabic": "الله|أكبر",
-    "transliteration": "Allāhu|Akbar",
-    "phonetics_spanish": "Al-lá-hu|Ák-bar",
+    "arabic": "الله أكبر",
+    "transliteration": "Allāhu Akbar",
+    "phonetics_spanish": "Al-lá-hu Ák-bar",
     "translation_spanish": "Dios es el más grande (se pronuncia dos veces: al incorporarse y al volver a postrarse)",
-    "translation_per_segment": "Dios es|el más grande (al incorporarse y al volver a postrarse)",
+    "translation_per_segment": "Dios es el más grande (al incorporarse y al volver a postrarse)",
     "video_timestamp": 93,
     "duration": 4,
     "highlight_timing": "0-2|2-4",
@@ -260,17 +260,17 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "Glorificado sea|mi Señor|el Altísimo",
     "video_timestamp": 99.9,
     "duration": 7,
-    "highlight_timing": "0-2|2-4.5|4.5-7",
+    "highlight_timing": "0-0.7|0.7-1.5|1.5-4.0",
     "position_image_names": ["postracion_sujud.png"]
   },
   {
     "id": 20,
     "name": "Levantarse al segundo rakaʿah",
-    "arabic": "الله|أكبر",
-    "transliteration": "Allāhu|Akbar",
-    "phonetics_spanish": "Al-lá-hu|Ák-bar",
+    "arabic": "الله أكبر",
+    "transliteration": "Allāhu Akbar",
+    "phonetics_spanish": "Al-lá-hu Ák-bar",
     "translation_spanish": "Dios es el más grande",
-    "translation_per_segment": "Dios es|el más grande",
+    "translation_per_segment": "Dios es el más grande",
     "video_timestamp": 107,
     "duration": 2,
     "highlight_timing": "0-1|1-2",

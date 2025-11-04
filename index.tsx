@@ -39,7 +39,7 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "Glorificado seas, oh Allah, y alabado seas|Bendito es tu nombre|Exaltada es tu majestad|No hay otro dios que Tú|Me refugio en Allah del demonio maldito",
     "video_timestamp": 7,
     "duration": 12,
-    "highlight_timing": "0.0-2.5|2.5-5|5-7.5|7.5-9.5|9.5-12",
+    "highlight_timing": "0.0-2.4|2.4-2.5|2.5-2.52|2.52-3.55|3.55-12",
     "position_image_names": ["parado_manos_cruzadas.png"]
   },
   {
@@ -290,38 +290,15 @@ const imageUrls: Record<string, string> = {
 
 
 const App: React.FC = () => {
-  const [prayerPhrases, setPrayerPhrases] = useState<PrayerPhrase[]>(() => {
-    try {
-      // First, try the current key.
-      let savedPhrases = localStorage.getItem('fajrPrayerPhrases');
-      // If not found, try the old key from your screenshot.
-      if (!savedPhrases) {
-        savedPhrases = localStorage.getItem('fajrPrayerPhraseTimings');
-      }
-      return savedPhrases ? JSON.parse(savedPhrases) : INITIAL_FAJR_PRAYER_PHRASES;
-    } catch (error) {
-      console.error("Could not parse localStorage data:", error);
-      return INITIAL_FAJR_PRAYER_PHRASES;
-    }
-  });
-
+  const [prayerPhrases] = useState<PrayerPhrase[]>(INITIAL_FAJR_PRAYER_PHRASES);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [activePhraseId, setActivePhraseId] = useState<number | null>(null);
-  const [showSettings, setShowSettings] = useState(false);
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const stopTimeoutRef = useRef<number | null>(null);
   const animationFrameRef = useRef<number | null>(null);
-
-  useEffect(() => {
-    try {
-      localStorage.setItem('fajrPrayerPhrases', JSON.stringify(prayerPhrases));
-    } catch (error) {
-      console.error("Could not save data to localStorage:", error);
-    }
-  }, [prayerPhrases]);
 
   useEffect(() => {
     const animate = () => {
@@ -449,27 +426,6 @@ const App: React.FC = () => {
     }
   };
 
-  const handleTimestampChange = (id: number, value: string) => {
-    const newTimestamp = parseFloat(value);
-    if (!isNaN(newTimestamp)) {
-      setPrayerPhrases(prev =>
-        prev.map(p => (p.id === id ? { ...p, video_timestamp: newTimestamp } : p))
-      );
-    }
-  };
-
-  const handleDurationChange = (id: number, value: string) => {
-    const newDuration = parseFloat(value);
-    if (!isNaN(newDuration)) {
-      setPrayerPhrases(prev =>
-        prev.map(p => (p.id === id ? { ...p, duration: newDuration } : p))
-      );
-    }
-  };
-  
-  const toggleSettings = () => setShowSettings(prev => !prev);
-
-
   return (
     <div className="app-container">
       <audio
@@ -498,20 +454,9 @@ const App: React.FC = () => {
             onChange={handleSeek}
             aria-label="Seek audio"
           />
-          {/* Add volume and other controls if needed */}
         </div>
       </div>
       
-      <div className="settings-header">
-         <button className="btn" onClick={toggleSettings}>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.2305 6.01465L12.5322 4.71289L14.2871 6.46777L12.9854 7.76953C13.293 8.44141 13.5 9.18945 13.5 10C13.5 13.0322 11.0322 15.5 8 15.5C4.96777 15.5 2.5 13.0322 2.5 10C2.5 6.96777 4.96777 4.5 8 4.5C8.81055 4.5 9.55859 4.70703 10.2305 5.01465L11.2305 6.01465ZM15 3L13.5 1.5L11 4L9 2L7 4L4.5 1.5L3 3L5.5 5.5C4.55371 6.55176 4 7.91016 4 9.5C4 12.5322 6.46777 15 9.5 15C12.5322 15 15 12.5322 15 9.5C15 7.91016 14.4463 6.55176 13.5 5.5L15 3Z" fill="#6c757d"/>
-          </svg>
-          {showSettings ? 'Ocultar' : 'Mostrar'} Ajustes
-        </button>
-      </div>
-
-
       {prayerPhrases.map((phrase, index) => {
         const arabicSegments = phrase.arabic.split('|');
         const transliterationSegments = phrase.transliteration.split('|');
@@ -535,30 +480,6 @@ const App: React.FC = () => {
             <div className="phrase-header">
               <h2>{index + 1}. {phrase.name}</h2>
               <div className="phrase-controls">
-                {showSettings && (
-                  <>
-                    <div className="input-group">
-                      <label htmlFor={`ts-${phrase.id}`}>Timestamp (seg)</label>
-                      <input
-                        id={`ts-${phrase.id}`}
-                        type="number"
-                        step="0.01"
-                        value={phrase.video_timestamp}
-                        onChange={(e) => handleTimestampChange(phrase.id, e.target.value)}
-                      />
-                    </div>
-                    <div className="input-group">
-                      <label htmlFor={`dur-${phrase.id}`}>Duración (seg)</label>
-                      <input
-                        id={`dur-${phrase.id}`}
-                        type="number"
-                        step="0.01"
-                        value={phrase.duration}
-                        onChange={(e) => handleDurationChange(phrase.id, e.target.value)}
-                      />
-                    </div>
-                  </>
-                )}
                 <button className="btn btn-primary" onClick={() => handlePlayPhrase(phrase)}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 5V19L19 12L8 5Z"/>

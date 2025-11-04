@@ -292,7 +292,12 @@ const imageUrls: Record<string, string> = {
 const App: React.FC = () => {
   const [prayerPhrases, setPrayerPhrases] = useState<PrayerPhrase[]>(() => {
     try {
-      const savedPhrases = localStorage.getItem('fajrPrayerPhrases');
+      // First, try the current key.
+      let savedPhrases = localStorage.getItem('fajrPrayerPhrases');
+      // If not found, try the old key from your screenshot.
+      if (!savedPhrases) {
+        savedPhrases = localStorage.getItem('fajrPrayerPhraseTimings');
+      }
       return savedPhrases ? JSON.parse(savedPhrases) : INITIAL_FAJR_PRAYER_PHRASES;
     } catch (error) {
       console.error("Could not parse localStorage data:", error);
@@ -308,6 +313,7 @@ const App: React.FC = () => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
   const stopTimeoutRef = useRef<number | null>(null);
+  const animationFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
     try {
@@ -318,22 +324,44 @@ const App: React.FC = () => {
   }, [prayerPhrases]);
 
   useEffect(() => {
+    const animate = () => {
+      if (audioRef.current) {
+        setCurrentTime(audioRef.current.currentTime);
+        animationFrameRef.current = requestAnimationFrame(animate);
+      }
+    };
+
+    if (isPlaying) {
+      animationFrameRef.current = requestAnimationFrame(animate);
+    } else {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+    }
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+    };
+  }, [isPlaying]);
+
+  useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    const updateCurrentTime = () => setCurrentTime(audio.currentTime);
     const setAudioDuration = () => setDuration(audio.duration);
     const onEnded = () => {
       setIsPlaying(false);
       setActivePhraseId(null);
     };
 
-    audio.addEventListener('timeupdate', updateCurrentTime);
     audio.addEventListener('loadedmetadata', setAudioDuration);
     audio.addEventListener('ended', onEnded);
 
     return () => {
-      audio.removeEventListener('timeupdate', updateCurrentTime);
       audio.removeEventListener('loadedmetadata', setAudioDuration);
       audio.removeEventListener('ended', onEnded);
       if (stopTimeoutRef.current) {

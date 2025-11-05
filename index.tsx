@@ -63,9 +63,9 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "phonetics_spanish": "al-jám-du|lil-lá-ji|rá-bi|al-‘a-la-mín",
     "translation_spanish": "La alabanza pertenece a Allah, Señor de los mundos",
     "translation_per_segment": "La alabanza|a Allah|Señor|de los mundos",
-    "video_timestamp": 22.5,
+    "video_timestamp": 22.7,
     "duration": 3.72,
-    "highlight_timing": "0.0-0.8|0.8-1.6|1.6-2.5|2.5-3.72",
+    "highlight_timing": "0.0-0.7|0.7-1.4|1.4-2.2|2.2-3.72",
     "position_image_names": ["parado_manos_cruzadas.png"]
   },
   {
@@ -76,8 +76,8 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "phonetics_spanish": "Ar-raj-má-nir|ra-jím",
     "translation_spanish": "El Compasivo, el Misericordioso",
     "translation_per_segment": "El Compasivo|El Misericordioso",
-    "video_timestamp": 26.1,
-    "duration": 2.1,
+    "video_timestamp": 26.43,
+    "duration": 1.8,
     "highlight_timing": "0.0-1.0|1.0-3.0",
     "position_image_names": ["parado_manos_cruzadas.png"]
   },
@@ -89,7 +89,7 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "phonetics_spanish": "Má-li-ki | yáu-mi| addeen",
     "translation_spanish": "Dueño del Día de la Retribucion",
     "translation_per_segment": "Dueño| del Día | de la Retribucion",
-    "video_timestamp": 28.2,
+    "video_timestamp": 28.23,
     "duration": 2.13,
     "highlight_timing": "0.0-0.7|0.7-1.3|1.3-3.0",
     "position_image_names": ["parado_manos_cruzadas.png"]
@@ -195,7 +195,7 @@ const INITIAL_FAJR_PRAYER_PHRASES: PrayerPhrase[] = [
     "translation_per_segment": "Que les dio|de comer|cuando|tenían hambre|y les protegió|min|del temor",
     "video_timestamp": 61.6,
     "duration": 7.7,
-    "highlight_timing": "0.0-1.3|1.3-2.2|2.2-2.8|2.8-4.0|4.0-5.0|5.0-5.7|5.7-7.0",
+    "highlight_timing": "0.0-1.3|1.3-2.2|2.2-2.8|2.8-4.0|4.0-5.2|5.2-5.7|5.7-7.0",
     "position_image_names": ["parado_manos_cruzadas.png"]
   },
   {
